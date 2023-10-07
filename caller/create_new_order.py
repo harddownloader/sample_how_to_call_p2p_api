@@ -8,12 +8,14 @@ load_dotenv()
 
 def post_new_order(access_token):
     post_order_endpoint_url = os.getenv("P2P_API_PATH") + 'orders'
-    headers = {"Authorization": "Bearer " + access_token}
-    r = requests.post(
+    headers = {
+        "Authorization": "Bearer " + access_token
+    }
+    order_req = requests.post(
         post_order_endpoint_url,
         headers=headers,
         json={
-            "orderId": "96712372376427",
+            "orderId": "98712372376427",
             "date": "2023-06-22T12:30:01",
             "card": "5555555555555555",
             "payoutAmount": 60000.00,
@@ -30,18 +32,18 @@ def post_new_order(access_token):
             }, separators=(',', ':')),
         }
     )
-    return r
+    return order_req
 
 
 def get_access_token() -> None or str:
     url = os.getenv("P2P_API_PATH") + "token/"
-    r = requests.post(url, json={
+    token_req = requests.post(url, json={
         'username': os.getenv("TEXT_USER_USERNAME"),
         'password': os.getenv("TEST_USER_PASSWORD")
     })
-    print(r.text)
-    if (r.status_code == 200):
-        token_res = r.json()
+    print(token_req.text)
+    if token_req.status_code == 200:
+        token_res = token_req.json()
         token = token_res['access']
         print(token)
         return token
@@ -51,7 +53,7 @@ def get_access_token() -> None or str:
 
 def create_new_order():
     access_token = get_access_token()
-    if (access_token is not None):
+    if access_token is not None:
         order_req = post_new_order(access_token=access_token)
         print(order_req.content)
         return order_req.json()
