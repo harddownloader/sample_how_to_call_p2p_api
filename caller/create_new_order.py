@@ -38,7 +38,7 @@ def post_new_order(access_token):
 def get_access_token() -> None or str:
     url = os.getenv("P2P_API_PATH") + "token/"
     token_req = requests.post(url, json={
-        'username': os.getenv("TEXT_USER_USERNAME"),
+        'username': os.getenv("TEST_USER_USERNAME"),
         'password': os.getenv("TEST_USER_PASSWORD")
     })
     print(token_req.text)
