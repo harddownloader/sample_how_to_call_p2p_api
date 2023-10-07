@@ -21,6 +21,6 @@ from callback.views import CallbackUpdate, CreateOrder
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('api/v1/callback/', CreateOrder.as_view()),
+    path('api/v1/order/', CreateOrder.as_view()),
     path('api/v1/callback/<int:pk>/', CallbackUpdate.as_view())
 ]
