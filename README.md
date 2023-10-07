@@ -1,4 +1,4 @@
-# Python sample to use p2p api
+# Python sample to use p2p API
 
 ## Installing
 ```
