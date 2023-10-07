@@ -1,5 +1,14 @@
-"# sample_how_to_call_p2p_api" 
+# Python sample to use p2p api
 
-## run dev server
+## Installing
+```
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+
+## Run dev server
+```
 python manage.py runserver 7000
-
+```
